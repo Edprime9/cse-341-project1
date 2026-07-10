@@ -10,10 +10,10 @@ const initDb = (callback) => {
     console.log('Database is already initialized!');
     return callback(null, database);
   }
-
+  console.log(process.env.MONGODB_URI);
   MongoClient.connect(process.env.MONGODB_URI)
     .then((client) => {
-      database = client.db(); // or client.db('cse341')
+      database = client.db("cse341"); // or client.db('cse341')
       callback(null, database);
     })
     .catch((err) => {
